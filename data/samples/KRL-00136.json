@@ -1,0 +1,35 @@
+{
+ "label": "DSCR investor, decline",
+ "id": "KRL-00136",
+ "application_date": "2026-11-04",
+ "borrower": {
+  "name": "Finley Garrow",
+  "credit_score": 794,
+  "business_type": "consulting",
+  "years_self_employed": 6.8,
+  "monthly_debts": 1350.0,
+  "liquid_assets": 100400.0
+ },
+ "property": {
+  "address": "2293 Ridgeview St",
+  "state": "CA",
+  "property_type": "condo",
+  "appraised_value": 443000.0,
+  "purchase_price": 445000.0,
+  "market_rent": 4390.0,
+  "annual_taxes": 3729.01,
+  "annual_insurance": 2393.69,
+  "monthly_hoa": 368.06
+ },
+ "loan": {
+  "program": "dscr",
+  "purpose": "purchase",
+  "amount": 363000.0,
+  "lock_days": 60,
+  "points": 0.0
+ },
+ "statements": null,
+ "monitoring": {
+  "protected_group": "group_b"
+ }
+}

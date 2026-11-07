@@ -1,0 +1,35 @@
+{
+ "label": "DSCR investor, coverage under 1.00",
+ "id": "KRL-00028",
+ "application_date": "2026-11-04",
+ "borrower": {
+  "name": "Marlow Ravenell",
+  "credit_score": 756,
+  "business_type": "software",
+  "years_self_employed": 3.5,
+  "monthly_debts": 850.0,
+  "liquid_assets": 70500.0
+ },
+ "property": {
+  "address": "7306 Juniper Ave",
+  "state": "WA",
+  "property_type": "condo",
+  "appraised_value": 611000.0,
+  "purchase_price": null,
+  "market_rent": 4280.0,
+  "annual_taxes": 9611.54,
+  "annual_insurance": 3021.95,
+  "monthly_hoa": 329.24
+ },
+ "loan": {
+  "program": "dscr",
+  "purpose": "rate_term",
+  "amount": 409000.0,
+  "lock_days": 30,
+  "points": 0.0
+ },
+ "statements": null,
+ "monitoring": {
+  "protected_group": "group_a"
+ }
+}

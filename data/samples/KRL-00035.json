@@ -1,0 +1,1303 @@
+{
+ "label": "Bank statement, manual review",
+ "id": "KRL-00035",
+ "application_date": "2026-11-01",
+ "borrower": {
+  "name": "Emerson Fairbanks",
+  "credit_score": 627,
+  "business_type": "other",
+  "years_self_employed": 4.2,
+  "monthly_debts": 1170.0,
+  "liquid_assets": 209600.0
+ },
+ "property": {
+  "address": "8454 Willow Ln",
+  "state": "NV",
+  "property_type": "sfr",
+  "appraised_value": 437000.0,
+  "purchase_price": 434000.0,
+  "market_rent": 2880.0,
+  "annual_taxes": 7907.17,
+  "annual_insurance": 1989.44,
+  "monthly_hoa": 0.0
+ },
+ "loan": {
+  "program": "bank_statement",
+  "purpose": "purchase",
+  "amount": 312000.0,
+  "lock_days": 30,
+  "points": 0.0
+ },
+ "statements": {
+  "account_type": "personal",
+  "months": 12,
+  "period_start": "2025-11-01",
+  "period_end": "2026-10-31",
+  "transactions": [
+   {
+    "id": "KRL-00035-T0002",
+    "date": "2025-11-02",
+    "amount": 1511.89,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0010",
+    "date": "2025-11-02",
+    "amount": -1741.78,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0001",
+    "date": "2025-11-03",
+    "amount": 1033.42,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0009",
+    "date": "2025-11-07",
+    "amount": -1741.78,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0011",
+    "date": "2025-11-10",
+    "amount": -1741.78,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0004",
+    "date": "2025-11-13",
+    "amount": 952.7,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0008",
+    "date": "2025-11-14",
+    "amount": -1741.78,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0005",
+    "date": "2025-11-22",
+    "amount": 1455.11,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0003",
+    "date": "2025-11-23",
+    "amount": 2076.18,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0006",
+    "date": "2025-11-28",
+    "amount": 1630.16,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0007",
+    "date": "2025-11-29",
+    "amount": -1741.78,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0014",
+    "date": "2025-12-01",
+    "amount": 503.52,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0012",
+    "date": "2025-12-02",
+    "amount": 785.41,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0029",
+    "date": "2025-12-02",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0026",
+    "date": "2025-12-07",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0021",
+    "date": "2025-12-09",
+    "amount": 651.54,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0025",
+    "date": "2025-12-11",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0013",
+    "date": "2025-12-13",
+    "amount": 691.35,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0016",
+    "date": "2025-12-14",
+    "amount": 607.09,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0022",
+    "date": "2025-12-14",
+    "amount": 830.93,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0017",
+    "date": "2025-12-16",
+    "amount": 866.2,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0015",
+    "date": "2025-12-21",
+    "amount": 542.25,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0019",
+    "date": "2025-12-21",
+    "amount": 790.33,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0027",
+    "date": "2025-12-23",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0018",
+    "date": "2025-12-26",
+    "amount": 599.05,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0030",
+    "date": "2025-12-26",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0024",
+    "date": "2025-12-27",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0020",
+    "date": "2025-12-28",
+    "amount": 654.17,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0028",
+    "date": "2025-12-28",
+    "amount": -1183.75,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0023",
+    "date": "2025-12-31",
+    "amount": 702.07,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0036",
+    "date": "2026-01-02",
+    "amount": 707.95,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0038",
+    "date": "2026-01-04",
+    "amount": 541.19,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0034",
+    "date": "2026-01-07",
+    "amount": 1321.86,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0033",
+    "date": "2026-01-16",
+    "amount": 889.24,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0039",
+    "date": "2026-01-16",
+    "amount": 2500.0,
+    "type": "transfer_in",
+    "description": "Transfer from savings x4471"
+   },
+   {
+    "id": "KRL-00035-T0044",
+    "date": "2026-01-16",
+    "amount": -2083.43,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0041",
+    "date": "2026-01-17",
+    "amount": -2083.43,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0042",
+    "date": "2026-01-17",
+    "amount": -2083.43,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0043",
+    "date": "2026-01-17",
+    "amount": -2083.43,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0031",
+    "date": "2026-01-18",
+    "amount": 1321.63,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0040",
+    "date": "2026-01-22",
+    "amount": -2083.43,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0032",
+    "date": "2026-01-24",
+    "amount": 1255.25,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0035",
+    "date": "2026-01-24",
+    "amount": 664.21,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0037",
+    "date": "2026-01-24",
+    "amount": 1244.89,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0052",
+    "date": "2026-02-02",
+    "amount": 800.03,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0045",
+    "date": "2026-02-03",
+    "amount": 920.3,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0053",
+    "date": "2026-02-04",
+    "amount": 461.1,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0048",
+    "date": "2026-02-05",
+    "amount": 993.03,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0049",
+    "date": "2026-02-05",
+    "amount": 1151.95,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0047",
+    "date": "2026-02-07",
+    "amount": 454.08,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0046",
+    "date": "2026-02-11",
+    "amount": 1087.06,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0059",
+    "date": "2026-02-13",
+    "amount": -1866.54,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0051",
+    "date": "2026-02-16",
+    "amount": 737.15,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0056",
+    "date": "2026-02-18",
+    "amount": -1866.54,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0058",
+    "date": "2026-02-19",
+    "amount": -1866.54,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0054",
+    "date": "2026-02-21",
+    "amount": 2500.0,
+    "type": "transfer_in",
+    "description": "Transfer from savings x4471"
+   },
+   {
+    "id": "KRL-00035-T0057",
+    "date": "2026-02-21",
+    "amount": -1866.54,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0055",
+    "date": "2026-02-24",
+    "amount": -1866.54,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0050",
+    "date": "2026-02-27",
+    "amount": 984.11,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0060",
+    "date": "2026-03-02",
+    "amount": 880.48,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0067",
+    "date": "2026-03-02",
+    "amount": 755.42,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0062",
+    "date": "2026-03-05",
+    "amount": 1026.26,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0066",
+    "date": "2026-03-05",
+    "amount": 1070.41,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0064",
+    "date": "2026-03-06",
+    "amount": 1150.99,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0072",
+    "date": "2026-03-07",
+    "amount": -1987.38,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0063",
+    "date": "2026-03-08",
+    "amount": 605.94,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0070",
+    "date": "2026-03-08",
+    "amount": -1987.38,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0071",
+    "date": "2026-03-08",
+    "amount": -1987.38,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0069",
+    "date": "2026-03-10",
+    "amount": -1987.38,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0065",
+    "date": "2026-03-14",
+    "amount": 1086.66,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0061",
+    "date": "2026-03-23",
+    "amount": 678.6,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0068",
+    "date": "2026-03-26",
+    "amount": 750.34,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0083",
+    "date": "2026-04-01",
+    "amount": 553.12,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0082",
+    "date": "2026-04-06",
+    "amount": 942.9,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0076",
+    "date": "2026-04-11",
+    "amount": 589.11,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0085",
+    "date": "2026-04-11",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0091",
+    "date": "2026-04-11",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0086",
+    "date": "2026-04-12",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0077",
+    "date": "2026-04-15",
+    "amount": 782.11,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0089",
+    "date": "2026-04-17",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0090",
+    "date": "2026-04-20",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0075",
+    "date": "2026-04-21",
+    "amount": 795.53,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0078",
+    "date": "2026-04-21",
+    "amount": 763.93,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0080",
+    "date": "2026-04-24",
+    "amount": 517.47,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0073",
+    "date": "2026-04-25",
+    "amount": 965.82,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0074",
+    "date": "2026-04-25",
+    "amount": 523.39,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0084",
+    "date": "2026-04-25",
+    "amount": 565.36,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0087",
+    "date": "2026-04-26",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0088",
+    "date": "2026-04-26",
+    "amount": -1212.8,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0079",
+    "date": "2026-04-29",
+    "amount": 583.16,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0081",
+    "date": "2026-04-29",
+    "amount": 1206.54,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0092",
+    "date": "2026-05-04",
+    "amount": 1502.42,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0094",
+    "date": "2026-05-05",
+    "amount": 883.49,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0098",
+    "date": "2026-05-08",
+    "amount": 1659.83,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0105",
+    "date": "2026-05-08",
+    "amount": -1334.67,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0103",
+    "date": "2026-05-09",
+    "amount": -1334.67,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0095",
+    "date": "2026-05-14",
+    "amount": 714.19,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0104",
+    "date": "2026-05-17",
+    "amount": -1334.67,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0101",
+    "date": "2026-05-19",
+    "amount": -1334.67,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0093",
+    "date": "2026-05-25",
+    "amount": 598.35,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0096",
+    "date": "2026-05-25",
+    "amount": 1410.16,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0097",
+    "date": "2026-05-26",
+    "amount": 889.68,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0102",
+    "date": "2026-05-26",
+    "amount": -1334.67,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0099",
+    "date": "2026-05-30",
+    "amount": 1182.21,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0100",
+    "date": "2026-05-31",
+    "amount": -1334.67,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0109",
+    "date": "2026-06-01",
+    "amount": 1211.65,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0110",
+    "date": "2026-06-05",
+    "amount": 1085.48,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0115",
+    "date": "2026-06-07",
+    "amount": -1518.83,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0108",
+    "date": "2026-06-09",
+    "amount": 1913.26,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0116",
+    "date": "2026-06-15",
+    "amount": -35.0,
+    "type": "nsf_fee",
+    "description": "NSF fee"
+   },
+   {
+    "id": "KRL-00035-T0107",
+    "date": "2026-06-16",
+    "amount": 2146.84,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0113",
+    "date": "2026-06-18",
+    "amount": -1518.83,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0111",
+    "date": "2026-06-24",
+    "amount": -1518.83,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0114",
+    "date": "2026-06-26",
+    "amount": -1518.83,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0106",
+    "date": "2026-06-27",
+    "amount": 1416.8,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0112",
+    "date": "2026-06-28",
+    "amount": -1518.83,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0122",
+    "date": "2026-07-01",
+    "amount": 1327.64,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0123",
+    "date": "2026-07-01",
+    "amount": -1263.77,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0119",
+    "date": "2026-07-04",
+    "amount": 1524.7,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0121",
+    "date": "2026-07-04",
+    "amount": 1526.06,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0129",
+    "date": "2026-07-04",
+    "amount": -35.0,
+    "type": "nsf_fee",
+    "description": "NSF fee"
+   },
+   {
+    "id": "KRL-00035-T0118",
+    "date": "2026-07-06",
+    "amount": 1432.75,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0128",
+    "date": "2026-07-12",
+    "amount": -1263.77,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0117",
+    "date": "2026-07-13",
+    "amount": 902.18,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0125",
+    "date": "2026-07-18",
+    "amount": -1263.77,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0127",
+    "date": "2026-07-19",
+    "amount": -1263.77,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0124",
+    "date": "2026-07-22",
+    "amount": -1263.77,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0126",
+    "date": "2026-07-24",
+    "amount": -1263.77,
+    "type": "withdrawal",
+    "description": "Card purchases"
+   },
+   {
+    "id": "KRL-00035-T0120",
+    "date": "2026-07-30",
+    "amount": 1216.3,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0133",
+    "date": "2026-08-06",
+    "amount": 445.86,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0135",
+    "date": "2026-08-08",
+    "amount": 1039.84,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0142",
+    "date": "2026-08-08",
+    "amount": 15000.0,
+    "type": "transfer_in",
+    "description": "Transfer from savings x4471"
+   },
+   {
+    "id": "KRL-00035-T0130",
+    "date": "2026-08-13",
+    "amount": 596.88,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0141",
+    "date": "2026-08-14",
+    "amount": 475.93,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0132",
+    "date": "2026-08-15",
+    "amount": 797.65,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0139",
+    "date": "2026-08-16",
+    "amount": 741.16,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0144",
+    "date": "2026-08-16",
+    "amount": -5663.21,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0140",
+    "date": "2026-08-20",
+    "amount": 1033.48,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0136",
+    "date": "2026-08-26",
+    "amount": 558.01,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0143",
+    "date": "2026-08-26",
+    "amount": -5663.21,
+    "type": "withdrawal",
+    "description": "Supplier ACH"
+   },
+   {
+    "id": "KRL-00035-T0145",
+    "date": "2026-08-27",
+    "amount": -5663.21,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0146",
+    "date": "2026-08-27",
+    "amount": -5663.21,
+    "type": "withdrawal",
+    "description": "Rent"
+   },
+   {
+    "id": "KRL-00035-T0137",
+    "date": "2026-08-28",
+    "amount": 652.13,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0138",
+    "date": "2026-08-28",
+    "amount": 580.25,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0131",
+    "date": "2026-08-30",
+    "amount": 540.83,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0134",
+    "date": "2026-08-31",
+    "amount": 543.48,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0150",
+    "date": "2026-09-02",
+    "amount": 830.37,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0156",
+    "date": "2026-09-03",
+    "amount": 459.75,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0148",
+    "date": "2026-09-04",
+    "amount": 813.04,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0159",
+    "date": "2026-09-06",
+    "amount": -1671.46,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0157",
+    "date": "2026-09-07",
+    "amount": 933.89,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0163",
+    "date": "2026-09-07",
+    "amount": -1671.46,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0153",
+    "date": "2026-09-09",
+    "amount": 877.96,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0151",
+    "date": "2026-09-10",
+    "amount": 869.59,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0162",
+    "date": "2026-09-15",
+    "amount": -1671.46,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0147",
+    "date": "2026-09-16",
+    "amount": 635.12,
+    "type": "personal_deposit",
+    "description": "ACH credit"
+   },
+   {
+    "id": "KRL-00035-T0152",
+    "date": "2026-09-16",
+    "amount": 568.73,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0164",
+    "date": "2026-09-21",
+    "amount": -35.0,
+    "type": "nsf_fee",
+    "description": "NSF fee"
+   },
+   {
+    "id": "KRL-00035-T0154",
+    "date": "2026-09-23",
+    "amount": 789.35,
+    "type": "personal_deposit",
+    "description": "Mobile deposit"
+   },
+   {
+    "id": "KRL-00035-T0149",
+    "date": "2026-09-24",
+    "amount": 825.98,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0155",
+    "date": "2026-09-24",
+    "amount": 501.37,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0160",
+    "date": "2026-09-24",
+    "amount": -1671.46,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0161",
+    "date": "2026-09-27",
+    "amount": -1671.46,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0158",
+    "date": "2026-09-30",
+    "amount": 607.41,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0174",
+    "date": "2026-10-01",
+    "amount": 502.1,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0171",
+    "date": "2026-10-02",
+    "amount": 860.37,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0179",
+    "date": "2026-10-07",
+    "amount": -1462.87,
+    "type": "withdrawal",
+    "description": "Payroll"
+   },
+   {
+    "id": "KRL-00035-T0175",
+    "date": "2026-10-08",
+    "amount": 438.42,
+    "type": "refund",
+    "description": "Merchant refund"
+   },
+   {
+    "id": "KRL-00035-T0168",
+    "date": "2026-10-09",
+    "amount": 941.9,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0172",
+    "date": "2026-10-10",
+    "amount": 668.22,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0165",
+    "date": "2026-10-11",
+    "amount": 882.5,
+    "type": "personal_deposit",
+    "description": "Card settlement"
+   },
+   {
+    "id": "KRL-00035-T0169",
+    "date": "2026-10-14",
+    "amount": 887.5,
+    "type": "personal_deposit",
+    "description": "Wire in"
+   },
+   {
+    "id": "KRL-00035-T0173",
+    "date": "2026-10-15",
+    "amount": 855.47,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0166",
+    "date": "2026-10-18",
+    "amount": 1105.44,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   },
+   {
+    "id": "KRL-00035-T0178",
+    "date": "2026-10-18",
+    "amount": -1462.87,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0167",
+    "date": "2026-10-22",
+    "amount": 912.55,
+    "type": "personal_deposit",
+    "description": "Invoice pmt"
+   },
+   {
+    "id": "KRL-00035-T0176",
+    "date": "2026-10-22",
+    "amount": -1462.87,
+    "type": "withdrawal",
+    "description": "Fuel"
+   },
+   {
+    "id": "KRL-00035-T0177",
+    "date": "2026-10-27",
+    "amount": -1462.87,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0180",
+    "date": "2026-10-29",
+    "amount": -1462.87,
+    "type": "withdrawal",
+    "description": "Owner draw"
+   },
+   {
+    "id": "KRL-00035-T0170",
+    "date": "2026-10-30",
+    "amount": 382.98,
+    "type": "personal_deposit",
+    "description": "Zelle from client"
+   }
+  ],
+  "ending_balance": 11183.57
+ },
+ "monitoring": {
+  "protected_group": "group_a"
+ }
+}

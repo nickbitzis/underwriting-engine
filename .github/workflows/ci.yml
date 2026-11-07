@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Lint
+        run: |
+          uvx ruff check .
+          uvx ruff format --check .
+      - name: Test
+        run: uv run --python 3.12 --group dev pytest -q
+
+  rules-impact:
+    # Impact analysis before release: which applications change decision under the candidate rules.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: diff-rules (current vs candidate)
+        run: |
+          uv run --python 3.12 uwengine diff-rules \
+            --current rules/uw-rules-2026.11.0.yaml \
+            --candidate rules/candidate/uw-rules-2027.01.0.yaml \
+            --step-summary
+      - name: Fair lending monitoring under the candidate rules
+        run: |
+          {
+            echo '## Fair lending monitoring (candidate rules)'
+            echo
+            echo '```'
+            uv run --python 3.12 uwengine fair-lending --rules rules/candidate/uw-rules-2027.01.0.yaml
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t underwriting-engine:ci .
+      - name: Smoke test container
+        run: |
+          docker run -d --name uw -p 8782:8782 underwriting-engine:ci
+          for i in $(seq 1 20); do curl -sf http://localhost:8782/healthz && break; sleep 1; done
+          curl -sf -H 'content-type: application/json' -d '{"sample_id":"KRL-00041"}' http://localhost:8782/decide
+          curl -sf http://localhost:8782/metrics | grep uw_decisions_total
+          docker rm -f uw

@@ -1,0 +1,35 @@
+{
+ "label": "DSCR investor, approve",
+ "id": "KRL-00003",
+ "application_date": "2026-11-06",
+ "borrower": {
+  "name": "Casey Ellery",
+  "credit_score": 685,
+  "business_type": "contractor",
+  "years_self_employed": 4.7,
+  "monthly_debts": 680.0,
+  "liquid_assets": 188100.0
+ },
+ "property": {
+  "address": "3074 Bayberry St",
+  "state": "CO",
+  "property_type": "sfr",
+  "appraised_value": 448000.0,
+  "purchase_price": 453000.0,
+  "market_rent": 3080.0,
+  "annual_taxes": 4819.68,
+  "annual_insurance": 1911.23,
+  "monthly_hoa": 0.0
+ },
+ "loan": {
+  "program": "dscr",
+  "purpose": "purchase",
+  "amount": 322000.0,
+  "lock_days": 45,
+  "points": 0.0
+ },
+ "statements": null,
+ "monitoring": {
+  "protected_group": "group_b"
+ }
+}

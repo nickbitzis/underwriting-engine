@@ -1,0 +1,110 @@
+# Eligibility and pricing rules for Kestrel Ridge Lending (a made-up non-QM lender).
+# Rules are data. The engine reads this file, records its version and sha256 on every decision,
+# and never hard-codes a threshold. A new version is a new file with a later effective_date.
+version: "2026.07.0"
+effective_date: "2026-07-01"
+description: "Q3 2026 credit policy. Superseded by 2026.11.0."
+
+income:
+  # A single deposit above this share of the average monthly eligible deposits is excluded
+  # from income and needs a letter of explanation.
+  large_deposit_pct: 0.50
+  # Share of business deposits treated as expenses, by business type. Personal accounts use 0.
+  expense_factor:
+    default: 0.50
+    consulting: 0.30
+    software: 0.30
+    real_estate_agent: 0.40
+    contractor: 0.60
+    trucking: 0.70
+    restaurant: 0.75
+    retail: 0.65
+  nsf_condition_count: 1     # 1 or more NSFs in the last 12 months: letter of explanation
+  nsf_refer_count: 4         # 4 or more: manual underwriting
+  nsf_decline_count: 8       # 8 or more: decline
+  declining_trend_refer_pct: 0.25   # second-half deposits down 25% or more vs first half: refer
+  min_years_self_employed: 2
+
+products:
+  bank_statement:
+    label: "Bank Statement 30-Year Fixed"
+    base_rate: 7.375
+    term_months: 360
+    min_fico: 620
+    max_dti: 0.45
+    dti_refer_margin: 0.05     # DTI above max but within the margin goes to manual review
+    min_reserves_months: 3
+    loan_amount: { min: 150000, max: 3000000 }
+    # Max LTV by credit score and purpose. Rows are checked top down, the first row whose
+    # fico_min the borrower meets applies.
+    max_ltv:
+      - { fico_min: 740, purchase: 0.90, rate_term: 0.85, cash_out: 0.80 }
+      - { fico_min: 700, purchase: 0.85, rate_term: 0.80, cash_out: 0.75 }
+      - { fico_min: 660, purchase: 0.80, rate_term: 0.75, cash_out: 0.70 }
+      - { fico_min: 620, purchase: 0.75, rate_term: 0.70, cash_out: 0.65 }
+    jumbo:
+      threshold: 1500000
+      ltv_reduction: 0.05
+  dscr:
+    label: "DSCR Investor 30-Year Fixed"
+    base_rate: 7.625
+    term_months: 360
+    min_fico: 660
+    min_dscr: 1.00
+    dscr_refer_floor: 0.75     # DSCR from the floor up to min_dscr goes to manual review
+    min_reserves_months: 6
+    loan_amount: { min: 100000, max: 2000000 }
+    max_ltv:
+      - { fico_min: 740, purchase: 0.80, rate_term: 0.75, cash_out: 0.75 }
+      - { fico_min: 700, purchase: 0.80, rate_term: 0.75, cash_out: 0.70 }
+      - { fico_min: 660, purchase: 0.75, rate_term: 0.70, cash_out: 0.65 }
+    jumbo:
+      threshold: 1500000
+      ltv_reduction: 0.05
+
+pricing:
+  # Loan level price adjustments in rate percent. Columns are LTV bands, upper bound inclusive.
+  ltv_bands: [0.60, 0.70, 0.75, 0.80, 0.85, 0.90]
+  llpa_grid:
+    - { fico_min: 780, adj: [0.000, 0.000, 0.125, 0.250, 0.375, 0.500] }
+    - { fico_min: 740, adj: [0.000, 0.125, 0.250, 0.375, 0.500, 0.750] }
+    - { fico_min: 700, adj: [0.125, 0.250, 0.375, 0.625, 0.875, 1.125] }
+    - { fico_min: 660, adj: [0.375, 0.500, 0.750, 1.000, 1.250, 1.500] }
+    - { fico_min: 620, adj: [0.750, 1.000, 1.250, 1.500, 1.875, 2.250] }
+  purpose: { purchase: 0.000, rate_term: 0.125, cash_out: 0.375 }
+  statement_months: { "12": 0.250, "24": 0.000 }
+  property_type: { sfr: 0.000, condo: 0.250, "2_4_unit": 0.375 }
+  dscr_bands:
+    - { dscr_min: 1.25, adj: -0.125 }
+    - { dscr_min: 1.00, adj: 0.000 }
+    - { dscr_min: 0.00, adj: 0.500 }
+  loan_amount_bands:
+    - { max: 200000, adj: 0.250 }
+    - { max: 1500000, adj: 0.000 }
+    - { max: 99999999, adj: 0.250 }
+  lock_days: { "30": 0.000, "45": 0.125, "60": 0.250 }
+  points:
+    rate_per_point: 0.250   # each discount point (1% of loan amount) buys the rate down this much
+    max_points: 3
+  min_rate: 5.500
+
+state_overlays:
+  FL: { reserves_months_add: 3 }
+  NJ: { rate_adj: 0.125 }
+ineligible_states: [ND, SD, VT]
+
+# Adverse action reasons, ordered by priority (1 is listed first). A decline lists up to
+# max_reasons principal reasons in this order, the way an adverse action notice expects.
+adverse_action:
+  max_reasons: 4
+  reasons:
+    STATE_INELIGIBLE: { priority: 1, text: "We do not lend on properties in {state}." }
+    CREDIT_SCORE: { priority: 2, text: "Your credit score of {fico} is below our minimum of {min_fico} for this loan program." }
+    INSUFFICIENT_INCOME: { priority: 3, text: "The income we could verify from your bank statements is not enough to support this loan." }
+    DTI: { priority: 4, text: "Your monthly debts, including this loan, would be {dti:.0%} of your verified income. Our maximum is {max_dti:.0%}." }
+    DSCR: { priority: 5, text: "The property's market rent covers {dscr:.2f} times the monthly payment. Our minimum is {min_dscr:.2f}." }
+    LTV: { priority: 6, text: "The loan amount is {ltv:.1%} of the property value. Our maximum for your credit score and loan purpose is {max_ltv:.1%}." }
+    NSF: { priority: 7, text: "Your bank statements show {nsf_count} insufficient funds events in the last 12 months." }
+    RESERVES: { priority: 8, text: "After closing you would have {reserves_months:.1f} months of payments in reserve. We require {min_reserves:.0f}." }
+    LOAN_AMOUNT: { priority: 9, text: "The requested loan amount of ${loan_amount:,.0f} is outside our limits of ${min_amount:,.0f} to ${max_amount:,.0f}." }
+    TIME_IN_BUSINESS: { priority: 10, text: "You have been self-employed for {years:.1f} years. We require at least {min_years:.0f}." }

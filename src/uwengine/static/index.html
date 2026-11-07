@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Underwriting Engine</title>
+<style>
+:root {
+  --bg: #f6f7f9; --panel: #ffffff; --text: #1c2330; --muted: #5d6878; --border: #dde2e9;
+  --track: #e8ebf0; --accent: #2f6fdb; --good: #11804f; --good-soft: #e3f5ec;
+  --warn: #8a5a00; --warn-soft: #fff4dc; --refer: #6941c6; --refer-soft: #efeafc;
+  --bad: #b42318; --bad-soft: #fde8e6;
+  --radius: 10px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11151c; --panel: #181e27; --text: #e6eaf0; --muted: #9aa5b5; --border: #2a3340;
+    --track: #232b37; --accent: #6c9cf0; --good: #4ccb8f; --good-soft: #15302a;
+    --warn: #f3c46b; --warn-soft: #3a2e14; --refer: #b69cf7; --refer-soft: #2a2140;
+    --bad: #ff8a7a; --bad-soft: #3b1d1b; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-size: 14px; }
+header { padding: 18px 24px 8px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+h1 { font-size: 20px; margin: 0; }
+h2 { font-size: 13px; margin: 0 0 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.muted { color: var(--muted); }
+select, button { font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; }
+button { cursor: pointer; }
+button:hover { border-color: var(--accent); }
+main { padding: 8px 24px 24px; display: grid; gap: 16px; grid-template-columns: repeat(6, 1fr); }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; min-width: 0; }
+.s2 { grid-column: span 2; } .s3 { grid-column: span 3; } .s4 { grid-column: span 4; } .s6 { grid-column: span 6; }
+.banner { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.outcome { font-size: 22px; font-weight: 700; padding: 6px 14px; border-radius: 8px; }
+.o-approve { background: var(--good-soft); color: var(--good); }
+.o-approve_with_conditions { background: var(--warn-soft); color: var(--warn); }
+.o-refer { background: var(--refer-soft); color: var(--refer); }
+.o-decline { background: var(--bad-soft); color: var(--bad); }
+.kpis { display: flex; gap: 28px; flex-wrap: wrap; }
+.kpi .v { font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.kpi .l { color: var(--muted); font-size: 12px; }
+.kpi .v.bad { color: var(--bad); }
+ol, ul { margin: 0; padding-left: 20px; }
+li { margin: 4px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 5px 8px; border-top: 1px solid var(--border); white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; border-top: 0; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+tfoot td { font-weight: 650; }
+.scroll { overflow-x: auto; }
+.bar { height: 8px; background: var(--track); border-radius: 4px; overflow: hidden; min-width: 80px; }
+.bar > div { height: 100%; background: var(--accent); }
+.chip { font-size: 12px; padding: 1px 8px; border-radius: 10px; background: var(--track); color: var(--muted); }
+.formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: var(--track); padding: 8px 10px; border-radius: 6px; margin-top: 10px; overflow-x: auto; }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+.strip { display: flex; gap: 2px; margin: 12px 0 4px; }
+.strip div { flex: 1; height: 26px; border-radius: 3px; position: relative; }
+.strip .cur { outline: 2px solid var(--text); outline-offset: 1px; }
+.c-approve { background: var(--good); } .c-approve_with_conditions { background: var(--warn); }
+.c-refer { background: var(--refer); } .c-decline { background: var(--bad); }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; background: var(--c); }
+.wi { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 10px; }
+.letter { white-space: pre-wrap; background: var(--track); border-radius: 6px; padding: 10px; margin-top: 8px; font-size: 13px; }
+.adv { font-size: 12px; color: var(--warn); }
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; padding: 8px 16px 16px; }
+  header { padding: 16px 16px 8px; }
+  .s2, .s3, .s4, .s6 { grid-column: span 1; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Underwriting Engine</h1>
+  <span class="muted">Kestrel Ridge Lending, synthetic non-QM files</span>
+  <select id="sample" aria-label="Sample loan file"></select>
+  <span class="chip" id="rules">rules</span>
+</header>
+<main>
+  <section class="panel s6 banner">
+    <div class="outcome" id="outcome">...</div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section class="panel s3">
+    <h2 id="why-title">Reasons and conditions</h2>
+    <div id="why"></div>
+  </section>
+
+  <section class="panel s3">
+    <h2>What if: <span id="dp-label">down payment</span></h2>
+    <input type="range" id="dp" min="5" max="50" step="1" value="20" aria-label="Down payment percent">
+    <div class="wi" id="wi"></div>
+    <div class="strip" id="strip"></div>
+    <div class="legend">
+      <span style="--c: var(--good)">approve</span><span style="--c: var(--warn)">with conditions</span>
+      <span style="--c: var(--refer)">refer</span><span style="--c: var(--bad)">decline</span>
+      <span class="muted">5% to 50%, each cell 2.5 points</span>
+    </div>
+  </section>
+
+  <section class="panel s4">
+    <h2 id="ws-title">Income worksheet</h2>
+    <div id="ws"></div>
+  </section>
+
+  <section class="panel s2">
+    <h2>Pricing</h2>
+    <div class="scroll"><table id="price"></table></div>
+    <h2 style="margin-top:16px">Points vs rate</h2>
+    <div class="scroll"><table id="ladder"></table></div>
+  </section>
+
+  <section class="panel s6">
+    <h2>Underwriter assist <span class="adv">(drafted by a model from the engine output, advisory only)</span></h2>
+    <button id="assist">Draft summary and condition letters</button>
+    <div id="assist-out"></div>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const money = (x) => "$" + Number(x).toLocaleString("en-US", { maximumFractionDigits: 0 });
+const money2 = (x) => "$" + Number(x).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = (x, d = 1) => (x * 100).toFixed(d) + "%";
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const label = (o) => o.replaceAll("_", " ");
+let current = null, sampleId = null, file = null, timer = null;
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) } : {});
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function basis(f) {
+  const p = f.property;
+  return f.loan.purpose === "purchase" && p.purchase_price ? Math.min(p.appraised_value, p.purchase_price) : p.appraised_value;
+}
+
+function kpi(l, v, bad) { return `<div class="kpi"><div class="v ${bad ? "bad" : ""}">${v}</div><div class="l">${l}</div></div>`; }
+
+function renderDecision(d) {
+  const m = d.metrics;
+  $("outcome").className = "outcome o-" + d.outcome;
+  $("outcome").textContent = label(d.outcome);
+  $("rules").textContent = `rules ${d.rules_version} / ${d.decision_id}`;
+  let k = kpi("Note rate", d.pricing.note_rate.toFixed(3) + "%");
+  k += kpi("LTV / max", `${pct(m.ltv)} / ${pct(m.max_ltv)}`, m.ltv > m.max_ltv + 1e-9);
+  if (m.dti !== undefined) k += kpi("DTI", pct(m.dti), m.dti > 0.5);
+  if (m.qualifying_income !== undefined) k += kpi("Qualifying income / mo", money(m.qualifying_income));
+  if (m.dscr !== undefined) k += kpi("DSCR", m.dscr.toFixed(3), m.dscr < 1);
+  k += kpi("PITIA / mo", money(m.pitia));
+  k += kpi("Reserves", `${m.reserves_months.toFixed(1)} mo (need ${m.required_reserves_months})`, m.reserves_months < m.required_reserves_months);
+  k += kpi("Loan", money(file.loan.amount) + " " + label(file.loan.purpose));
+  $("kpis").innerHTML = k;
+
+  let w = "";
+  if (d.adverse_action_reasons.length) {
+    w += `<div class="muted" style="margin-bottom:6px">Adverse action reasons, in order:</div><ol>` +
+      d.adverse_action_reasons.map((r) => `<li>${esc(r.text)} <span class="chip">${r.code}</span></li>`).join("") + "</ol>";
+  }
+  if (d.refer_reasons.length) {
+    w += `<div class="muted" style="margin:8px 0 6px">${d.outcome === "refer" ? "Sent to manual underwriting because:" : "Also flagged for manual review:"}</div><ul>` +
+      d.refer_reasons.map((r) => `<li>${esc(r)}</li>`).join("") + "</ul>";
+  }
+  if (d.conditions.length) {
+    w += `<div class="muted" style="margin:8px 0 6px">Conditions:</div><ul>` +
+      d.conditions.map((c) => `<li>${esc(c.text)}${c.ref ? ` <span class="chip">${c.ref}</span>` : ""}</li>`).join("") + "</ul>";
+  }
+  const failed = d.checks.filter((c) => !c.passed).length;
+  w += `<div class="muted" style="margin-top:10px">${d.checks.length} rules checked, ${failed} failed. Input sha256 ${d.input_sha256.slice(0, 12)}.</div>`;
+  $("why").innerHTML = w || "No reasons or conditions.";
+
+  $("price").innerHTML = "<tr><th>Adjustment</th><th class='num'>Rate</th></tr>" +
+    d.pricing.items.map((i) => `<tr><td title="${esc(i.rule)}">${esc(i.label)}</td><td class="num">${i.adj >= 0 && i.label !== "Base rate" ? "+" : ""}${i.adj.toFixed(3)}</td></tr>`).join("") +
+    `<tfoot><tr><td>Note rate${d.pricing.offered ? "" : " (not offered)"}</td><td class="num">${d.pricing.note_rate.toFixed(3)}%</td></tr></tfoot>`;
+  $("ladder").innerHTML = "<tr><th class='num'>Points</th><th class='num'>Rate</th><th class='num'>P&amp;I</th><th class='num'>Cost</th><th class='num'>Breakeven</th></tr>" +
+    d.pricing.ladder.filter((_, i) => i % 2 === 0).map((r) => `<tr><td class="num">${r.points}</td><td class="num">${r.rate.toFixed(3)}%</td><td class="num">${money(r.principal_interest)}</td><td class="num">${money(r.upfront_cost)}</td><td class="num">${r.breakeven_months ? r.breakeven_months + " mo" : "-"}</td></tr>`).join("");
+
+  if (d.income_worksheet) renderIncome(d.income_worksheet); else renderDscr(d.dscr_worksheet);
+}
+
+function renderIncome(ws) {
+  $("ws-title").textContent = `Income worksheet: ${ws.months} months, ${ws.account_type} account`;
+  const max = Math.max(...ws.monthly.map((r) => r.gross_deposits));
+  let h = `<div class="scroll"><table><tr><th>Month</th><th class="num">Deposits</th><th class="num">Excluded</th><th class="num">Eligible</th><th></th></tr>` +
+    ws.monthly.map((r) => `<tr><td>${r.month}</td><td class="num">${money2(r.gross_deposits)}</td><td class="num">${r.excluded ? money2(r.excluded) : "-"}</td><td class="num">${money2(r.eligible)}</td><td><div class="bar"><div style="width:${(r.eligible / max) * 100}%"></div></div></td></tr>`).join("") +
+    `<tfoot><tr><td>Total</td><td></td><td></td><td class="num">${money2(ws.eligible_total)}</td><td></td></tr></tfoot></table></div>`;
+  if (ws.excluded_items.length) {
+    h += `<h2 style="margin-top:16px">Excluded deposits (${ws.excluded_items.length})</h2><div class="scroll"><table><tr><th>Date</th><th>Txn</th><th class="num">Amount</th><th>Reason</th></tr>` +
+      ws.excluded_items.map((e) => `<tr><td>${e.date}</td><td>${e.txn_id}</td><td class="num">${money2(e.amount)}</td><td>${esc(e.reason)}${e.loe ? " <span class='chip'>LOE</span>" : ""}</td></tr>`).join("") + "</table></div>";
+  }
+  h += `<div class="formula">Large deposit threshold: ${pct(ws.large_deposit_pct, 0)} of average ${money2(ws.average_before_large_exclusion)} = ${money2(ws.large_deposit_threshold)}<br>` +
+    `Qualifying income: ${esc(ws.formula)}<br>NSF events in last 12 months: ${ws.nsf_count_12m}. Trend, second half vs first: ${pct(ws.trend_second_half_vs_first)}</div>`;
+  $("ws").innerHTML = h;
+}
+
+function renderDscr(ws) {
+  $("ws-title").textContent = "DSCR worksheet";
+  const p = ws.payment;
+  $("ws").innerHTML = `<table><tr><th>Item</th><th class="num">Monthly</th></tr>
+    <tr><td>Principal and interest at ${p.rate_pct.toFixed(3)}%, ${p.term_months} months</td><td class="num">${money2(p.principal_interest)}</td></tr>
+    <tr><td>Property taxes</td><td class="num">${money2(p.taxes)}</td></tr>
+    <tr><td>Insurance</td><td class="num">${money2(p.insurance)}</td></tr>
+    <tr><td>HOA</td><td class="num">${money2(p.hoa)}</td></tr>
+    <tfoot><tr><td>PITIA</td><td class="num">${money2(p.pitia)}</td></tr>
+    <tr><td>Market rent (appraisal rent schedule)</td><td class="num">${money2(ws.market_rent)}</td></tr></tfoot></table>
+    <div class="formula">DSCR: ${esc(ws.formula)}</div>`;
+}
+
+function renderWhatIf(row) {
+  if (row.error) { $("wi").textContent = row.error; return; }
+  let h = kpi("Outcome", `<span class="outcome o-${row.outcome}" style="font-size:14px;padding:2px 8px">${label(row.outcome)}</span>`);
+  h += kpi("Loan", money(row.loan_amount)) + kpi("Rate", row.note_rate.toFixed(3) + "%") + kpi("LTV", pct(row.ltv));
+  if (row.dti !== null) h += kpi("DTI", pct(row.dti));
+  if (row.dscr !== null) h += kpi("DSCR", row.dscr.toFixed(3));
+  h += kpi("Reserves", row.reserves_months.toFixed(1) + " mo");
+  if (row.reasons.length) h += kpi("Reasons", row.reasons.join(", "));
+  $("wi").innerHTML = h;
+}
+
+async function whatIfPoint() {
+  const v = Number($("dp").value);
+  const r = await api("/what-if", { sample_id: sampleId, variations: [{ down_payment_pct: v / 100 }] });
+  renderWhatIf(r.scenarios[0]);
+  [...$("strip").children].forEach((c) => c.classList.toggle("cur", Math.abs(Number(c.dataset.dp) - v) < 1.25));
+}
+
+async function whatIfStrip() {
+  const r = await api("/what-if", { sample_id: sampleId, down_payment_range: { from: 0.05, to: 0.5, step: 0.025 } });
+  $("strip").innerHTML = r.scenarios.map((s) => `<div class="c-${s.outcome || "decline"}" data-dp="${s.inputs.down_payment_pct * 100}" title="${pct(s.inputs.down_payment_pct)} down: ${s.outcome ? label(s.outcome) + ", " + s.note_rate.toFixed(3) + "%" : s.error}"></div>`).join("");
+}
+
+async function load(id) {
+  sampleId = id;
+  file = await api("/api/samples/" + id);
+  current = await api("/decide", { sample_id: id });
+  renderDecision(current);
+  $("dp-label").textContent = file.loan.purpose === "purchase" ? "down payment" : "equity left in the property";
+  $("dp").value = Math.round((1 - file.loan.amount / basis(file)) * 100);
+  $("assist-out").innerHTML = "";
+  await whatIfStrip();
+  await whatIfPoint();
+}
+
+$("dp").addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(whatIfPoint, 120); });
+$("sample").addEventListener("change", (e) => load(e.target.value));
+$("assist").addEventListener("click", async () => {
+  const a = await api(`/decisions/${current.decision_id}/assist`, {});
+  $("assist-out").innerHTML = `<p>${esc(a.summary)}</p><div class="muted">Provider: ${esc(a.provider)} (${esc(a.model)}). Engine outcome unchanged: ${label(a.decision_outcome)}.</div>` +
+    a.condition_letters.map((l) => `<div class="letter">${esc(l)}</div>`).join("");
+});
+
+(async () => {
+  const samples = await api("/api/samples");
+  $("sample").innerHTML = samples.map((s) => `<option value="${s.id}">${s.id}: ${esc(s.label)}</option>`).join("");
+  const params = new URLSearchParams(location.search);
+  const pick = params.get("sample") || samples[0].id;
+  $("sample").value = pick;
+  await load(pick);
+})();
+</script>
+</body>
+</html>

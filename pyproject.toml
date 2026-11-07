@@ -1,0 +1,40 @@
+[project]
+name = "uwengine"
+version = "1.0.0"
+description = "A non-QM mortgage underwriting decision engine: bank-statement and DSCR income, versioned YAML rules, LLPA pricing, adverse action reasons, fair lending monitoring."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Nick Bitzis" }]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+    "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+claude = ["anthropic>=2.6"]
+
+[project.scripts]
+uwengine = "uwengine.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6", "httpx>=0.27"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/uwengine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:Using .httpx. with .starlette.testclient."]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
